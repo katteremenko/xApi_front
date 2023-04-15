@@ -2,7 +2,9 @@ import axios from "axios";
 import { errorHandler, requestHandler, responseHandler } from "./interceptors";
 
 const BASE_URL = "http://127.0.0.1:4000";
-const token = JSON.parse(localStorage.getItem("token") || "");
+
+const token = localStorage.getItem("token") ?? ""
+
 const apiInstance = axios.create({
   baseURL: `${BASE_URL}/api`,
   headers: {
@@ -15,7 +17,6 @@ export const apiInstanceFormData = axios.create({
   baseURL: `${BASE_URL}/api`,
   headers: {
     Authorization: `Bearer ${token}`,
-
     "Content-Type": "multipart/form-data",
   },
 });

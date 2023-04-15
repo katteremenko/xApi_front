@@ -1,25 +1,33 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
-import {Button} from "../../../ui/button/button";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../../ui/button/button";
+import { logoutEvent } from "../../../entities/user/model/user.actions";
+import { useIsAuth } from "../../../entities/user/model/user.store";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const isAuth = useIsAuth();
+  const handleLogin = () => {
+    navigate("/sign-in");
+  };
 
-    const navigate = useNavigate()
+  const handleLogout = () => {
+    logoutEvent();
+    window.location.href = "/";
+  };
 
-    const handleLogin = () => {
-        navigate('/sign-in')
-    }
-
-    return (
-        <>
-            <HeaderContainer>
-                <Button onClick={handleLogin}>
-                    LOGIN
-                </Button>
-            </HeaderContainer>
-        </>
-    );
+  return (
+    <>
+      <HeaderContainer>
+        {!isAuth ? (
+          <Button onClick={handleLogin}>LOGIN</Button>
+        ) : (
+          <Button onClick={handleLogout}>LOGOUT</Button>
+        )}
+      </HeaderContainer>
+    </>
+  );
 };
 
 export default Header;
@@ -34,5 +42,4 @@ const HeaderContainer = styled.div`
   padding: 0 20px;
   box-sizing: border-box;
   border-bottom: 1px solid black;
-
-`
+`;

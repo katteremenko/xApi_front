@@ -19,6 +19,7 @@ export const Login = (props: LoginProps) => {
     console.log(`true from login = `, true);
     loginFX({ login, password }).then((pld) => {
       toast.success("Success");
+      window.location.href = "/courses";
     });
   };
 

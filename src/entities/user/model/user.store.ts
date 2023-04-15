@@ -23,7 +23,7 @@ sample({
       password: pld.clientInfo.api.basic_secret,
     };
     localStorage.setItem("client", JSON.stringify(client));
-    localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("token", token);
     return {
       token,
       client,
