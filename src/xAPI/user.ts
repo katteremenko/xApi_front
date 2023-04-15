@@ -9,8 +9,8 @@
 
 
 export let User = {
-    username: "1f0033d95a271a13f670189b1f99acf7dfddd78f",
-    password: "44c911935680b9e9535e8af1d017767f65619ef4",
+    username: "06b3576e43036e73eb81bf07325b4a918edb8ec4",
+    password: "d4b22561bc9846358f86f41c1fe64a68b12b0857",
     mail: "admin@admin.ru",
     name: "admin",
     mailto: "mailto:admin@admin.ru"

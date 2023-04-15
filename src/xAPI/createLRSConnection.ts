@@ -1,5 +1,5 @@
 import XAPI from "@xapi/xapi";
-import {User} from "./user";
+import { $user } from "../entities/user/model/user.store";
 
 // const endpoint = "http://localhost/data/xAPI/";
 // const username = User.username;
@@ -11,13 +11,15 @@ import {User} from "./user";
 // });
 
 export const CreateLRSConnection = () => {
-    // console.log('User = ', User)
-    const endpoint = "http://localhost/data/xAPI/";
-    const username = User.username;
-    const password = User.password;
-    const auth = XAPI.toBasicAuth(username, password);
-    return new XAPI({
-        endpoint: endpoint,
-        auth: auth,
-    });
-}
+  const clientString = localStorage.getItem("client") || "";
+  console.log(clientString)
+  const client = JSON.parse(clientString);
+  const endpoint = "http://localhost/data/xAPI/";
+  const username = client.username;
+  const password = client.password;
+  const auth = XAPI.toBasicAuth(username, password);
+  return new XAPI({
+    endpoint: endpoint,
+    auth: auth,
+  });
+};
