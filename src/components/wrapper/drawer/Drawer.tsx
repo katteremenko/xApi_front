@@ -1,30 +1,30 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { authMeEvent } from "../../../entities/user/model/user.store";
+import {
+  authMeEvent,
+  useIsAuth,
+} from "../../../entities/user/model/user.store";
 
 const Drawer = () => {
   useEffect(() => {
     authMeEvent();
   }, []);
 
+  const isAuth = useIsAuth();
+
   return (
     <>
-      <Wrapper>
-        {/*<ListElement to={'/'}> Главная </ListElement>*/}
-        <ListElement to={"/courses"}> Все курсы </ListElement>
-        <ListElement to={"/upload-course"}> Загрузить новый курс </ListElement>
-        <ListElement to={"/statements"}> Statements </ListElement>
-        {/*<ListElement to={'/upload-file'}> Загрузить файл в курс </ListElement>*/}
-        {/*<ListElement href={'/'}> Библиотека </ListElement>*/}
-        {/*<ListElement href={'/'}> Люди </ListElement>*/}
-        {/*<ListElement href={'/'}> Отправить </ListElement>*/}
-        {/*<ListElement href={'/'}> Приглашения </ListElement>*/}
-        {/*<ListElement href={'/'}> История </ListElement>*/}
-        {/*<ListElement href={'/'}> xAPI LRS </ListElement>*/}
-        {/*<ListElement href={'/'}> Приложения </ListElement>*/}
-        {/*<ListElement href={'/'}> Аккаунт </ListElement>*/}
-      </Wrapper>
+      {isAuth && (
+        <Wrapper>
+          <ListElement to={"/courses"}> Все курсы </ListElement>
+          <ListElement to={"/upload-course"}>
+            {" "}
+            Загрузить новый курс{" "}
+          </ListElement>
+          <ListElement to={"/statements"}> Statements </ListElement>
+        </Wrapper>
+      )}
     </>
   );
 };
